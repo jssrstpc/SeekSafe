@@ -11,6 +11,7 @@ namespace SeekSafe.Controllers
     public class HomeController : BaseController
     {
         // GET: Home
+        [AllowAnonymous]
         public ActionResult Index()
         {
             // Only authenticated Admin can create | update | dalete

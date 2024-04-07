@@ -15,6 +15,18 @@ namespace SeekSafe.Controllers
         public ActionResult Index()
         {
             // Only authenticated Admin can create | update | dalete
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Home()
+        {
+            return View();
+        }
+
+        public ActionResult ManageUsers()
+        {
+            // Only authenticated Admin can create | update | dalete
             List<UserAccount> UserList = _userRepo.GetAll();
             return View(UserList);
         }
@@ -66,7 +78,7 @@ namespace SeekSafe.Controllers
         {
             //check if already login no need to login again, redirect to the index
             if (User.Identity.IsAuthenticated)
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
 
             return View();
         }
@@ -99,7 +111,7 @@ namespace SeekSafe.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index");
         }
 
 

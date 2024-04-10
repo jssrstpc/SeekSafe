@@ -24,15 +24,17 @@ Create Registration Page.
 
 Modify Index for Views and Controller.
 
-Change Index to Manage Users.
+Change Index to Manage Users.(done)
 
-Moodify Login Page / forgot password.
+Modify Login Page / forgot password.
 
 Modify _Layout.cshtml for design.
 
+Add layout for login and home page.(done)
+
 Create views and controllers for User functionalities.
 
-Create views and controllers for Admin functionalities.
+Create views and controllers for Admin functionalities.(done)
 
 Create application logo.
 

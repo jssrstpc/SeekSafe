@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SeekSafe.UserAccount>
+@{
+    ViewBag.Title = "ManageUsers";
+}
+<h2>Manage Users</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (!String.IsNullOrEmpty(TempData["Msg"] as String))
+{
+    <div class="alert alert-success">@TempData["Msg"]</div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Seq #
+        </th>
+        <th>
+            ID Number
+        </th>
+        <th>
+            Username
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    @{ int i = 1; }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@i</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userIDNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @{
+                    var roleName = "";
+                    if (item.roleID != null)
+                    {
+                        SeekSafeEntities _db = new SeekSafeEntities();
+                        var role = _db.UserRole.FirstOrDefault(r => r.roleID == item.roleID);
+                        roleName = role != null ? role.roleName : "";
+                    }
+                    @roleName
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.userID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.userID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.userID })
+            </td>
+        </tr>
+                        i++;
+                    }
+</table>

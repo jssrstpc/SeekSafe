@@ -134,6 +134,14 @@ namespace SeekSafe.Controllers
                 return View(u);
             }
 
+            var existingUser = _userRepo.Table.FirstOrDefault(m => m.userIDNum == u.userIDNum);
+            // Check if the userIDNum already exists in the database
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("userIDNum", "User ID Number already exists.");
+                return View(u);
+            }
+
             // Save the user to the database
             _userRepo.Create(u);
             TempData["Msg"] = $"User {u.username} successfully created!";

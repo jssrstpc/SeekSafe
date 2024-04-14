@@ -195,8 +195,6 @@ C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\b
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\bin\System.Web.Webpages.Razor.xml
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\bin\System.Web.Helpers.xml
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\bin\System.Web.Mvc.xml
-C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.csproj.AssemblyReference.cache
-C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.csproj.CoreCompileInputs.cache
-C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.csproj.CopyComplete
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.dll
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.pdb
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.csprojResolveAssemblyReference.cache

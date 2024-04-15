@@ -1,0 +1,27 @@
+﻿@model IEnumerable<SeekSafe.UserAccount>
+
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    ViewBag.Title = "Reports";
+}
+
+
+<div class="form-container">
+    <form action="/Reports/Submit" method="post">
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+        </div>
+        <div>
+            <input type="radio" id="lost" name="type" value="lost" required>
+            <label for="lost">Lost Item</label>
+            <input type="radio" id="found" name="type" value="found" required>
+            <label for="found">Found Item</label>
+        </div>
+        <div>
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

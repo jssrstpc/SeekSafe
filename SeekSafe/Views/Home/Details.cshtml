@@ -1,0 +1,63 @@
+﻿@model SeekSafe.UserAccount
+
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>UserAccounts</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.userID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.userID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.userIDNum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.userIDNum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.roleID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.roleID)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</div>

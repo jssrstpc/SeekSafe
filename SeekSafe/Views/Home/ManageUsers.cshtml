@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SeekSafe.UserAccount>
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    ViewBag.Title = "Manage Users";
+}
+
+<section class="py-5 container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8">
+            <h1 class="fw-light text-start">Manage Users</h1>
+            <p class="text-start">
+                <a href="~/Home/Create" class="btn btn-primary my-2">Create New Account</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<div class="container">
+    @if (!String.IsNullOrEmpty(TempData["Msg"] as String))
+    {
+        <div class="alert alert-success">@TempData["Msg"]</div>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                Seq #
+            </th>
+            <th>
+                ID Number
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Role
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        @{ int i = 1; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userIDNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.username)
+                </td>
+                <td>
+                    @{
+                        var roleName = "";
+                        if (item.roleID != null)
+                        {
+                            SeekSafeEntities _db = new SeekSafeEntities();
+                            var role = _db.UserRole.FirstOrDefault(r => r.roleID == item.roleID);
+                            roleName = role != null ? role.roleName : "";
+                        }
+                        @roleName
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.userID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.userID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.userID })
+                </td>
+            </tr>
+                            i++;
+                        }
+    </table>
+
+</div>

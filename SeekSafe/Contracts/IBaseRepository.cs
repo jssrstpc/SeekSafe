@@ -3,22 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SeekSafe.Utils;
 
 namespace SeekSafe.Contracts
 {
-    public enum ErrorCode
-    {
-        Success,
-        Error
-    }
-
     public interface IBaseRepository<T>
     {
         T Get(object id);
         List<T> GetAll();
-        ErrorCode Create(T t);
-        ErrorCode Update(object id, T t);
-        ErrorCode Delete(object id);
-
+        ErrorCode Create(T t, out String errorMsg);
+        ErrorCode Update(object id, T t, out String errorMsg);
+        ErrorCode Delete(object id, out String errorMsg);
     }
 }

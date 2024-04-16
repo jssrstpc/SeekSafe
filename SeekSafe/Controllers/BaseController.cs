@@ -11,11 +11,17 @@ namespace SeekSafe.Controllers
     {
         public SeekSafeEntities _db;
         public BaseRepository<UserAccount> _userRepo;
+        public UserManager _userManager;
+        public String ErrorMessage;
+
+
 
         public BaseController()
         {
             _db = new SeekSafeEntities();
             _userRepo = new BaseRepository<UserAccount>();
+            _userManager = new UserManager();
+
         }
     }
 }

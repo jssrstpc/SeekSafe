@@ -205,7 +205,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelCRUD.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MyRole.cs" />
+    <Compile Include="Models\ForgotPasswordModel.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\UserLogged.cs" />
+    <Compile Include="Repository\CategoryManager.cs" />
+    <Compile Include="Repository\UserManager.cs" />
+    <Compile Include="Utils\MyRole.cs" />
     <Compile Include="Notification_Message.cs">
       <DependentUpon>ModelCRUD.tt</DependentUpon>
     </Compile>
@@ -235,6 +240,7 @@
     <Compile Include="UserRole.cs">
       <DependentUpon>ModelCRUD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Utilities.cs" />
     <Compile Include="vw_LostItem.cs">
       <DependentUpon>ModelCRUD.tt</DependentUpon>
     </Compile>
@@ -264,6 +270,7 @@
     <Content Include="Views\Home\Report.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Verify.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -273,7 +280,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\SeekSafe\" />
   </ItemGroup>

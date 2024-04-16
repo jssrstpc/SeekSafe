@@ -86,6 +86,7 @@
           <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="roleID" Type="int" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -372,6 +373,7 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="roleID" Type="Int32" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK__UserAccou__roleI__4F7CD00D" FromRole="UserAccount" ToRole="UserRole" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -630,6 +632,7 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <EntitySetMapping Name="UserAccount">
             <EntityTypeMapping TypeName="SeekSafeModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
                 <ScalarProperty Name="username" ColumnName="username" />

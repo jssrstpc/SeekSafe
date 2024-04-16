@@ -19,7 +19,9 @@ namespace SeekSafe
         public string username { get; set; }
         public string password { get; set; }
         public Nullable<int> roleID { get; set; }
+        public string code { get; set; }
     
         public virtual UserRole UserRole { get; set; }
+        public int status { get; internal set; }
     }
 }

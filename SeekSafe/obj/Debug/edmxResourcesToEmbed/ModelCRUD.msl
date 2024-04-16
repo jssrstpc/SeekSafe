@@ -84,6 +84,7 @@
     <EntitySetMapping Name="UserAccount">
       <EntityTypeMapping TypeName="SeekSafeModel.UserAccount">
         <MappingFragment StoreEntitySet="UserAccount">
+          <ScalarProperty Name="code" ColumnName="code" />
           <ScalarProperty Name="userID" ColumnName="userID" />
           <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
           <ScalarProperty Name="username" ColumnName="username" />

@@ -24,5 +24,6 @@ namespace SeekSafe
         public Nullable<System.DateTime> registrationDate { get; set; }
     
         public virtual Department Department { get; set; }
+        public int active { get; internal set; }
     }
 }

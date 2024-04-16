@@ -81,6 +81,7 @@
     <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="roleID" Type="int" />
+    <Property Name="code" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>

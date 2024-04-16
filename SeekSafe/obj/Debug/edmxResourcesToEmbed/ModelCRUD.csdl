@@ -87,6 +87,7 @@
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="roleID" Type="Int32" />
     <NavigationProperty Name="UserRole" Relationship="Self.FK__UserAccou__roleI__4F7CD00D" FromRole="UserAccount" ToRole="UserRole" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>

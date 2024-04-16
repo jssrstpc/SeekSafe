@@ -16,5 +16,7 @@ namespace SeekSafe
     {
         public int categoryID { get; set; }
         public string categoryName { get; set; }
+        public object userId { get; internal set; }
+        public string userIDNum { get; internal set; }
     }
 }

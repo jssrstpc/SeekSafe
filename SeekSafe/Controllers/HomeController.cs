@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SeekSafe.Models;
+using SeekSafe.Repository;
+using SeekSafe.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +18,8 @@ namespace SeekSafe.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
+            IsUserLoggedSession();
+
             return View();
         }
 
@@ -98,39 +103,82 @@ namespace SeekSafe.Controllers
         }
 
         [AllowAnonymous] // Override allow not authenticated user to access login
-        public ActionResult Login()
+        public ActionResult Login(String ReturnUrl)
         {
-            //check if already login no need to login again, redirect to the index
             if (User.Identity.IsAuthenticated)
-                return RedirectToAction("Home");
+            return RedirectToAction("Index");
+
+            ViewBag.Error = String.Empty;
+            ViewBag.ReturnUrl = ReturnUrl;
 
             return View();
         }
+
         [AllowAnonymous] // not set to allow anonymous during POST submit
         [HttpPost]
-        public ActionResult Login(UserAccount u)
+        public ActionResult Login(String username, String password, String ReturnUrl)
         {
-            // same as Select * from User where username = u.username limit 1 or top 1 or default if no data
-            var user = _userRepo.Table.Where(m => m.username == u.username).FirstOrDefault();
-            if (user == null)
+            if (_userManager.Login(username, password, ref ErrorMessage) == ErrorCode.Success)
             {
-                // User is correct username and password
-                ModelState.AddModelError("", "Username not exist!");
+                var user = _userManager.GetUserByUsername(username);
+
+                if (user.status != (Int32)Status.Active)
+                {
+                    TempData["username"] = username;
+                    return RedirectToAction("Verify");
+                }
+                //
+                FormsAuthentication.SetAuthCookie(username, false);
+                //
+                if (!String.IsNullOrEmpty(ReturnUrl))
+                    return Redirect(ReturnUrl);
+
+                switch (user.UserRole.roleName)
+                {
+                    case Constant.Role_User:
+                        return RedirectToAction("Home");
+                    case Constant.Role_Admin:
+                        return RedirectToAction("Home");
+                    default:
+                        return RedirectToAction("Index");
+                }
+            }
+            ViewBag.Error = ErrorMessage;
+
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Verify()
+        {
+            if (String.IsNullOrEmpty(TempData["username"] as String))
+                return RedirectToAction("Login");
+
+            return View();
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Verify(String code, String username)
+        {
+            if (String.IsNullOrEmpty(username))
+                return RedirectToAction("Login");
+
+            TempData["username"] = username;
+
+            var user = _userManager.GetUserByUsername(username);
+
+            if (!user.code.Equals(code))
+            {
+                TempData["error"] = "Incorrect Code";
                 return View();
             }
 
-            if (!user.password.Equals(u.password))
-            {
-                // User is correct username and password
-                ModelState.AddModelError("", "Incorrect Password");
-                return View();
-            }
-            // user is not exist or incorrect password
-            // add error to the form
-            FormsAuthentication.SetAuthCookie(u.username, false);
+            user.status = (Int32)Status.Active;
+            _userManager.UpdateUser(user, ref ErrorMessage);
 
             return RedirectToAction("Login");
         }
+
 
         public ActionResult Logout()
         {
@@ -138,41 +186,38 @@ namespace SeekSafe.Controllers
             return RedirectToAction("Index");
         }
 
+        
         [AllowAnonymous]
+        [HttpPost]
         public ActionResult Register()
         {
             if (User.Identity.IsAuthenticated)
-                return RedirectToAction("Home");
+                return RedirectToAction("Index");
+
+            ViewBag.Role = Utilities.ListRole;
 
             return View();
         }
-        
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Register(UserAccount u)
+        public ActionResult Register(UserAccount ua, String ConfirmPass)
         {
-            // Check model validation
-            if (!ModelState.IsValid)
+            if (!ua.password.Equals(ConfirmPass))
             {
-                // If model validation fails, return the registration view with validation errors
-                return View(u);
+                ModelState.AddModelError(String.Empty, "Password not match");
+                ViewBag.Role = Utilities.ListRole;
+                return View(ua);
             }
 
-            var existingUser = _userRepo.Table.FirstOrDefault(m => m.userIDNum == u.userIDNum);
-            // Check if the userIDNum already exists in the database
-            if (existingUser != null)
+            if (_userManager.Register(ua, ref ErrorMessage) != ErrorCode.Success)
             {
-                ModelState.AddModelError("userIDNum", "User ID Number already exists.");
-                return View(u);
+                ModelState.AddModelError(String.Empty, ErrorMessage);
+
+                ViewBag.Role = Utilities.ListRole;
+                return View(ua);
             }
-
-            // Save the user to the database
-            _userRepo.Create(u);
-            TempData["Msg"] = $"User {u.username} was recently added!";
-
-            // Redirect to the login page after successful registration
-            return RedirectToAction("Login");
+            TempData["username"] = ua.username;
+            return RedirectToAction("Verify");
         }
 
 

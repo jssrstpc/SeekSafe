@@ -172,23 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Category.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Contracts\IBaseRepository.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Department.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Item.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ItemLocation.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelCRUD.Context.cs">
       <AutoGen>True</AutoGen>
@@ -206,42 +194,9 @@
       <DependentUpon>ModelCRUD.edmx</DependentUpon>
     </Compile>
     <Compile Include="MyRole.cs" />
-    <Compile Include="Notification_Message.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tag.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TransactionHistory.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAccount.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserInfo.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserRole.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Views\Home\Verify.cs" />
-    <Compile Include="vw_LostItem.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vw_UserRole.cs">
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

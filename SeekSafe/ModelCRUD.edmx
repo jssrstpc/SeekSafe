@@ -32,6 +32,7 @@
           <Property Name="locationFound" Type="int" />
           <Property Name="dateFound" Type="datetime" />
           <Property Name="ImageURL" Type="nvarchar" MaxLength="255" />
+          <Property Name="locationName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ItemLocation">
           <Key>
@@ -89,9 +90,9 @@
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
-            <PropertyRef Name="userInfoID" />
+            <PropertyRef Name="userID" />
           </Key>
-          <Property Name="userInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userIDNum" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -197,9 +198,30 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__UserInfo__userID__534D60F1" />-->
+        <Association Name="FK__UserInfo__userID__534D60F1">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -280,6 +302,14 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
             <End Role="Department" EntitySet="Department" />
             <End Role="UserInfo" EntitySet="UserInfo" />
           </AssociationSet>
+          <AssociationSet Name="FK__UserInfo__userID__534D60F1" Association="Self.FK__UserInfo__userID__534D60F1">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserAccount" Association="Self.FK_UserInfo_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -315,6 +345,7 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ItemLocation" Relationship="Self.FK__Item__locationFo__59FA5E80" FromRole="Item" ToRole="ItemLocation" />
           <NavigationProperty Name="TransactionHistory" Relationship="Self.FK__Transacti__itemI__5EBF139D" FromRole="Item" ToRole="TransactionHistory" />
+          <Property Name="locationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ItemLocation">
           <Key>
@@ -372,10 +403,13 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="roleID" Type="Int32" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK__UserAccou__roleI__4F7CD00D" FromRole="UserAccount" ToRole="UserRole" />
+          <NavigationProperty Name="UserInfo" Relationship="SeekSafeModel.FK__UserInfo__userID__534D60F1" FromRole="UserAccount" ToRole="UserInfo" />
+          <NavigationProperty Name="UserInfo1" Relationship="SeekSafeModel.FK_UserInfo_UserAccount" FromRole="UserAccount" ToRole="UserInfo" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="userInfoID" />
+            <PropertyRef Name="userID" />
           </Key>
           <Property Name="userInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -386,6 +420,9 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="registrationDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Department" Relationship="Self.FK__UserInfo__depart__5441852A" FromRole="UserInfo" ToRole="Department" />
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="UserAccount" Relationship="SeekSafeModel.FK__UserInfo__userID__534D60F1" FromRole="UserInfo" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount1" Relationship="SeekSafeModel.FK_UserInfo_UserAccount" FromRole="UserInfo" ToRole="UserAccount" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -503,6 +540,14 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="vw_UserRole" EntityType="SeekSafeModel.vw_UserRole" />
           <EntitySet Name="vw_LostItem" EntityType="SeekSafeModel.vw_LostItem" />
+          <AssociationSet Name="FK__UserInfo__userID__534D60F1" Association="SeekSafeModel.FK__UserInfo__userID__534D60F1">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserAccount" Association="SeekSafeModel.FK_UserInfo_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -541,6 +586,30 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK__UserInfo__userID__534D60F1">
+          <End Type="SeekSafeModel.UserAccount" Role="UserAccount" Multiplicity="1" />
+          <End Type="SeekSafeModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserAccount">
+          <End Type="SeekSafeModel.UserAccount" Role="UserAccount" Multiplicity="1" />
+          <End Type="SeekSafeModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -566,6 +635,7 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <EntitySetMapping Name="Item">
             <EntityTypeMapping TypeName="SeekSafeModel.Item">
               <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="locationName" ColumnName="locationName" />
                 <ScalarProperty Name="itemID" ColumnName="itemID" />
                 <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
                 <ScalarProperty Name="itemName" ColumnName="itemName" />
@@ -641,7 +711,7 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
           <EntitySetMapping Name="UserInfo">
             <EntityTypeMapping TypeName="SeekSafeModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
-                <ScalarProperty Name="userInfoID" ColumnName="userInfoID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />

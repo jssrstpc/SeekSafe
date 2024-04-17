@@ -27,6 +27,7 @@
     <Property Name="locationFound" Type="int" />
     <Property Name="dateFound" Type="datetime" />
     <Property Name="ImageURL" Type="nvarchar" MaxLength="255" />
+    <Property Name="locationName" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="ItemLocation">
     <Key>
@@ -84,9 +85,9 @@
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
-      <PropertyRef Name="userInfoID" />
+      <PropertyRef Name="userID" />
     </Key>
-    <Property Name="userInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="userIDNum" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -192,9 +193,30 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__UserInfo__userID__534D60F1" />-->
+  <Association Name="FK__UserInfo__userID__534D60F1">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserAccount">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -273,6 +295,14 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
     </AssociationSet>
     <AssociationSet Name="FK__UserInfo__depart__5441852A" Association="Self.FK__UserInfo__depart__5441852A">
       <End Role="Department" EntitySet="Department" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserInfo__userID__534D60F1" Association="Self.FK__UserInfo__userID__534D60F1">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserAccount" Association="Self.FK_UserInfo_UserAccount">
+      <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="UserInfo" EntitySet="UserInfo" />
     </AssociationSet>
   </EntityContainer>

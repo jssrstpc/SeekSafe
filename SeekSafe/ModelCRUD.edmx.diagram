@@ -22,6 +22,8 @@
         <AssociationConnector ManuallyRouted="false" Association="SeekSafeModel.FK__UserAccou__roleI__4F7CD00D" />
         <EntityTypeShape EntityType="SeekSafeModel.vw_UserRole" Width="1.5" PointX="1.875" PointY="11.625" />
         <EntityTypeShape EntityType="SeekSafeModel.vw_LostItem" Width="1.5" PointX="4" PointY="11.625" />
+        <AssociationConnector Association="SeekSafeModel.FK__UserInfo__userID__534D60F1" />
+        <AssociationConnector Association="SeekSafeModel.FK_UserInfo_UserAccount" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

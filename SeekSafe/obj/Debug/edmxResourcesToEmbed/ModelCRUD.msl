@@ -20,6 +20,7 @@
     <EntitySetMapping Name="Item">
       <EntityTypeMapping TypeName="SeekSafeModel.Item">
         <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="locationName" ColumnName="locationName" />
           <ScalarProperty Name="itemID" ColumnName="itemID" />
           <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
           <ScalarProperty Name="itemName" ColumnName="itemName" />
@@ -95,7 +96,7 @@
     <EntitySetMapping Name="UserInfo">
       <EntityTypeMapping TypeName="SeekSafeModel.UserInfo">
         <MappingFragment StoreEntitySet="UserInfo">
-          <ScalarProperty Name="userInfoID" ColumnName="userInfoID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
           <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
           <ScalarProperty Name="firstName" ColumnName="firstName" />
           <ScalarProperty Name="lastName" ColumnName="lastName" />

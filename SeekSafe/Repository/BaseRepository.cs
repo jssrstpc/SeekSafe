@@ -72,5 +72,19 @@ namespace SeekSafe.Repository
                 return ErrorCode.Error;
             }
         }
+
+        public ErrorCode LostItemReport(T t)
+        {
+            try
+            {
+                _table.Add(t);
+                _db.SaveChanges();
+                return ErrorCode.Success;
+            }
+            catch (Exception ex)
+            {
+                return ErrorCode.Error;
+            }
+        }
     }
 }

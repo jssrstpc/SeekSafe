@@ -42,6 +42,12 @@ namespace SeekSafe.Controllers
             return View();
         }
 
+        public ActionResult LostItemReport()
+        {
+            return View();
+        }
+
+       
         [Authorize(Roles = "User,Admin")]
         public ActionResult Report()
         {

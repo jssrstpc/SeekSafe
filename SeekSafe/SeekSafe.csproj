@@ -258,12 +258,14 @@
     <Content Include="Views\Shared\_IndexLayout.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
-    <Content Include="Views\Home\UserHome.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\LostItems.cshtml" />
     <Content Include="Views\Home\FoundItems.cshtml" />
     <Content Include="Views\Home\Report.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\LostItemReport.cshtml" />
+    <Content Include="Views\Shared\_FormLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

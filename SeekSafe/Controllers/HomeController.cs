@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -200,7 +201,36 @@ namespace SeekSafe.Controllers
             return RedirectToAction("FoundItems");
         }
 
-        
+
+        [HttpPost]
+        public ActionResult FileUpload(HttpPostedFileBase file, Item lostItem)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                try
+                {
+                    // Save the file to a directory
+                    string fileName = Path.GetFileName(file.FileName);
+                    string filePath = Path.Combine(Server.MapPath("~/Views/FileUpload"), fileName);
+                    file.SaveAs(filePath);
+
+                    ViewBag.Message = "File uploaded successfully.";
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Error = "An error occurred: " + ex.Message;
+                }
+            }
+            else
+            {
+                ViewBag.Error = "Please select a file.";
+            }
+            TempData["ReportMsg"] = $"Lost item '{lostItem.itemLostName}' was successfully reported! ";
+            _ItemRepo.Create(lostItem);
+            return View("LostItems");
+        }
+
+
 
     }
 }

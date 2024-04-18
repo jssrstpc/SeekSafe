@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title SeekSafe</title>
+    <title>@ViewBag.Title - SeekSafe</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
@@ -16,13 +16,16 @@
 
         /* Container Styles */
         .container {
-            width: 100%;
-            max-width: 500px; 
-            margin: 100px auto; 
-            padding: 20px;
-            background-color: #fff; 
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 255, 0.3); 
+            width: 100% !important;
+            max-width: 500px !important; 
+            margin: 100px auto !important; 
+            padding: 20px !important;
+            background-color: #fff !important; 
+            border-radius: 8px !important;
+            box-shadow: 0 0 10px rgba(0, 0, 255, 0.3) !important; 
+        }
+        textarea {
+            resize: vertical;
         }
 
         /* Button Styles */
@@ -104,9 +107,12 @@
 
 <body>
     @RenderBody()
+    @RenderSection("Scripts", required: false)
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </body>
+
+
 </html>

@@ -2,12 +2,39 @@
 
 @{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
-    ViewBag.Title = "Lost Item Report";
+    ViewBag.Title = "Success Lost Item Report";
 }
 
 
 <div class="container">
     <div class="form-horizontal">
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Success! Your Report Has Been Submitted.</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        You will be directed to the Found Item section to check if there is a match for your lost item.
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <a href="~/Home/FoundItems" class="btn btn-primary">Ok</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
         <h4 align="center">Report Lost Item</h4>
         <hr />
         @using (Html.BeginForm())
@@ -46,7 +73,7 @@
             <div class="form-group">
                 Input Date Lost
                 <div>
-                    @Html.EditorFor(model => model.dateFound, new { htmlAttributes = new { @class = "form-control", placeholder = "YYYY-MM-DD HH:MM:SS", @required = true } })
+                    @Html.EditorFor(model => model.dateFound, new { htmlAttributes = new { @class = "form-control", placeholder = "MM/DD/YYYY", @required = true } })
                     @Html.ValidationMessageFor(model => model.dateFound, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -81,22 +108,23 @@
             </div>
 
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Submit" class="btn btn-default"  />
-                </div>
+            <div>
+                <button type="submit" value="Create" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Submit
+                </button>
             </div>
 
             <div>
                 @Html.ActionLink("Back", "LostItems", null, new { @class = "back-home" })
             </div>
 
-        
+    
+
         }
 
     </div>
 </div>
-
+    
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SeekSafeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SeekSafeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="categoryID" />
@@ -311,7 +311,8 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
             <End Role="UserInfo" EntitySet="UserInfo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SeekSafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -343,9 +344,9 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <Property Name="locationFound" Type="Int32" />
           <Property Name="dateFound" Type="DateTime" Precision="3" />
           <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="locationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ItemLocation" Relationship="Self.FK__Item__locationFo__59FA5E80" FromRole="Item" ToRole="ItemLocation" />
           <NavigationProperty Name="TransactionHistory" Relationship="Self.FK__Transacti__itemI__5EBF139D" FromRole="Item" ToRole="TransactionHistory" />
-          <Property Name="locationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ItemLocation">
           <Key>
@@ -403,15 +404,14 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="roleID" Type="Int32" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK__UserAccou__roleI__4F7CD00D" FromRole="UserAccount" ToRole="UserRole" />
-          <NavigationProperty Name="UserInfo" Relationship="SeekSafeModel.FK__UserInfo__userID__534D60F1" FromRole="UserAccount" ToRole="UserInfo" />
-          <NavigationProperty Name="UserInfo1" Relationship="SeekSafeModel.FK_UserInfo_UserAccount" FromRole="UserAccount" ToRole="UserInfo" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK__UserInfo__userID__534D60F1" FromRole="UserAccount" ToRole="UserInfo" />
+          <NavigationProperty Name="UserInfo1" Relationship="Self.FK_UserInfo_UserAccount" FromRole="UserAccount" ToRole="UserInfo" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
-            <PropertyRef Name="userInfoID" />
             <PropertyRef Name="userID" />
           </Key>
-          <Property Name="userInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -420,9 +420,8 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="registrationDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Department" Relationship="Self.FK__UserInfo__depart__5441852A" FromRole="UserInfo" ToRole="Department" />
-          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="UserAccount" Relationship="SeekSafeModel.FK__UserInfo__userID__534D60F1" FromRole="UserInfo" ToRole="UserAccount" />
-          <NavigationProperty Name="UserAccount1" Relationship="SeekSafeModel.FK_UserInfo_UserAccount" FromRole="UserInfo" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__UserInfo__userID__534D60F1" FromRole="UserInfo" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount1" Relationship="Self.FK_UserInfo_UserAccount" FromRole="UserInfo" ToRole="UserAccount" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -431,6 +430,32 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <Property Name="roleID" Type="Int32" Nullable="false" />
           <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UserAccount" Relationship="Self.FK__UserAccou__roleI__4F7CD00D" FromRole="UserRole" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="vw_LostItem">
+          <Key>
+            <PropertyRef Name="itemID" />
+            <PropertyRef Name="itemName" />
+          </Key>
+          <Property Name="itemID" Type="Int32" Nullable="false" />
+          <Property Name="userIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="itemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="itemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="itemDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="locationFound" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dateFound" Type="DateTime" Precision="0" />
+          <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_UserRole">
+          <Key>
+            <PropertyRef Name="roleID" />
+            <PropertyRef Name="username" />
+            <PropertyRef Name="roleName" />
+          </Key>
+          <Property Name="roleID" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK__UserInfo__depart__5441852A">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
@@ -480,6 +505,30 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserInfo__userID__534D60F1">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SeekSafeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Department" EntityType="Self.Department" />
@@ -492,6 +541,8 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <EntitySet Name="UserAccount" EntityType="Self.UserAccount" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" />
+          <EntitySet Name="vw_LostItem" EntityType="Self.vw_LostItem" />
+          <EntitySet Name="vw_UserRole" EntityType="Self.vw_UserRole" />
           <AssociationSet Name="FK__UserInfo__depart__5441852A" Association="Self.FK__UserInfo__depart__5441852A">
             <End Role="Department" EntitySet="Department" />
             <End Role="UserInfo" EntitySet="UserInfo" />
@@ -507,6 +558,14 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <AssociationSet Name="FK__UserAccou__roleI__4F7CD00D" Association="Self.FK__UserAccou__roleI__4F7CD00D">
             <End Role="UserRole" EntitySet="UserRole" />
             <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserInfo__userID__534D60F1" Association="Self.FK__UserInfo__userID__534D60F1">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_UserAccount" Association="Self.FK_UserInfo_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -538,16 +597,6 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="vw_UserRole" EntityType="SeekSafeModel.vw_UserRole" />
-          <EntitySet Name="vw_LostItem" EntityType="SeekSafeModel.vw_LostItem" />
-          <AssociationSet Name="FK__UserInfo__userID__534D60F1" Association="SeekSafeModel.FK__UserInfo__userID__534D60F1">
-            <End Role="UserAccount" EntitySet="UserAccount" />
-            <End Role="UserInfo" EntitySet="UserInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserInfo_UserAccount" Association="SeekSafeModel.FK_UserInfo_UserAccount">
-            <End Role="UserAccount" EntitySet="UserAccount" />
-            <End Role="UserInfo" EntitySet="UserInfo" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -560,56 +609,6 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="vw_UserRole">
-          <Key>
-            <PropertyRef Name="roleID" />
-            <PropertyRef Name="roleName" />
-            <PropertyRef Name="username" />
-          </Key>
-          <Property Name="roleID" Type="Int32" Nullable="false" />
-          <Property Name="roleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="vw_LostItem">
-          <Key>
-            <PropertyRef Name="itemID" />
-            <PropertyRef Name="itemName" />
-          </Key>
-          <Property Name="itemID" Type="Int32" Nullable="false" />
-          <Property Name="userIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="itemName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="itemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="itemDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="locationFound" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="dateFound" Type="DateTime" Precision="0" />
-          <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK__UserInfo__userID__534D60F1">
-          <End Type="SeekSafeModel.UserAccount" Role="UserAccount" Multiplicity="1" />
-          <End Type="SeekSafeModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="UserAccount">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="UserInfo">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserInfo_UserAccount">
-          <End Type="SeekSafeModel.UserAccount" Role="UserAccount" Multiplicity="1" />
-          <End Type="SeekSafeModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="UserAccount">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="UserInfo">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -635,7 +634,6 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <EntitySetMapping Name="Item">
             <EntityTypeMapping TypeName="SeekSafeModel.Item">
               <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="locationName" ColumnName="locationName" />
                 <ScalarProperty Name="itemID" ColumnName="itemID" />
                 <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
                 <ScalarProperty Name="itemName" ColumnName="itemName" />
@@ -645,6 +643,7 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
                 <ScalarProperty Name="locationFound" ColumnName="locationFound" />
                 <ScalarProperty Name="dateFound" ColumnName="dateFound" />
                 <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="locationName" ColumnName="locationName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -730,6 +729,31 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vw_LostItem">
+            <EntityTypeMapping TypeName="SeekSafeModel.vw_LostItem">
+              <MappingFragment StoreEntitySet="vw_LostItem">
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="itemType" ColumnName="itemType" />
+                <ScalarProperty Name="itemStatus" ColumnName="itemStatus" />
+                <ScalarProperty Name="itemDescription" ColumnName="itemDescription" />
+                <ScalarProperty Name="locationFound" ColumnName="locationFound" />
+                <ScalarProperty Name="dateFound" ColumnName="dateFound" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_UserRole">
+            <EntityTypeMapping TypeName="SeekSafeModel.vw_UserRole">
+              <MappingFragment StoreEntitySet="vw_UserRole">
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SeekSafeModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SeekSafeModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SeekSafeModel.Store.sp_dropdiagram" />
@@ -754,31 +778,6 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SeekSafeModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SeekSafeModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="vw_UserRole">
-            <EntityTypeMapping TypeName="SeekSafeModel.vw_UserRole">
-              <MappingFragment StoreEntitySet="vw_UserRole">
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="roleName" ColumnName="roleName" />
-                <ScalarProperty Name="roleID" ColumnName="roleID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_LostItem">
-            <EntityTypeMapping TypeName="SeekSafeModel.vw_LostItem">
-              <MappingFragment StoreEntitySet="vw_LostItem">
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
-                <ScalarProperty Name="dateFound" ColumnName="dateFound" />
-                <ScalarProperty Name="locationFound" ColumnName="locationFound" />
-                <ScalarProperty Name="itemDescription" ColumnName="itemDescription" />
-                <ScalarProperty Name="itemStatus" ColumnName="itemStatus" />
-                <ScalarProperty Name="itemType" ColumnName="itemType" />
-                <ScalarProperty Name="itemName" ColumnName="itemName" />
-                <ScalarProperty Name="userIDNum" ColumnName="userIDNum" />
-                <ScalarProperty Name="itemID" ColumnName="itemID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

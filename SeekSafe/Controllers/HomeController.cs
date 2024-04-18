@@ -42,11 +42,6 @@ namespace SeekSafe.Controllers
             return View();
         }
 
-        public ActionResult LostItemReport()
-        {
-            return View();
-        }
-
        
         [Authorize(Roles = "User,Admin")]
         public ActionResult Report()
@@ -181,6 +176,31 @@ namespace SeekSafe.Controllers
             return RedirectToAction("Login");
         }
 
+        [Authorize(Roles = "User,Admin")]
+        public ActionResult LostItemReport()
+        {   
+            return View();
+        }
+
+        [Authorize(Roles = "User,Admin")]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult LostItemReport(Item lostItem)
+        {
+            if (!ModelState.IsValid)
+            {
+                // If model validation fails, return the registration view with validation errors
+                return View(lostItem);
+            }
+            // Save the lost item to the database
+            _ItemRepo.Create(lostItem);
+            TempData["Msg"] = $"Lost item '{lostItem.itemName}' was successfully reported!";
+
+            // Redirect to a confirmation page or other appropriate action
+            return RedirectToAction("FoundItems");
+        }
+
+        
 
     }
 }

@@ -132,27 +132,27 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="ModelCRUD.Context.tt">
+    <Content Include="ModelSeekSafe.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelCRUD.edmx</DependentUpon>
-      <LastGenOutput>ModelCRUD.Context.cs</LastGenOutput>
+      <DependentUpon>ModelSeekSafe.edmx</DependentUpon>
+      <LastGenOutput>ModelSeekSafe.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelCRUD.tt">
+    <Content Include="ModelSeekSafe.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelCRUD.edmx</DependentUpon>
-      <LastGenOutput>ModelCRUD.cs</LastGenOutput>
+      <DependentUpon>ModelSeekSafe.edmx</DependentUpon>
+      <LastGenOutput>ModelSeekSafe.cs</LastGenOutput>
     </Content>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <EntityDeploy Include="ModelCRUD.edmx">
+    <EntityDeploy Include="ModelSeekSafe.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelCRUD.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelSeekSafe.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ModelCRUD.edmx.diagram">
-      <DependentUpon>ModelCRUD.edmx</DependentUpon>
+    <Content Include="ModelSeekSafe.edmx.diagram">
+      <DependentUpon>ModelSeekSafe.edmx</DependentUpon>
     </Content>
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -172,31 +172,76 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Category.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Contracts\IBaseRepository.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Department.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ModelCRUD.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelCRUD.Context.tt</DependentUpon>
+    <Compile Include="Item.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelCRUD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelCRUD.tt</DependentUpon>
+    <Compile Include="ItemLocation.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelCRUD.Designer.cs">
+    <Compile Include="ModelSeekSafe.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelCRUD.edmx</DependentUpon>
+      <DependentUpon>ModelSeekSafe.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelSeekSafe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelSeekSafe.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSeekSafe.edmx</DependentUpon>
     </Compile>
     <Compile Include="MyRole.cs" />
+    <Compile Include="Notification_Message.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tag.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionHistory.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\Verify.cs" />
+    <Compile Include="vw_LostItem.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_UserRole.cs">
+      <DependentUpon>ModelSeekSafe.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -221,6 +266,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\LostItemReport.cshtml" />
     <Content Include="Views\Shared\_FormLayout.cshtml" />
+    <Content Include="Views\Home\LostItemModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

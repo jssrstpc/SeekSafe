@@ -20,7 +20,7 @@ namespace SeekSafe
             this.Item = new HashSet<Item>();
         }
     
-        public int locationID { get; set; }
+        public string locationID { get; set; }
         public string locationName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

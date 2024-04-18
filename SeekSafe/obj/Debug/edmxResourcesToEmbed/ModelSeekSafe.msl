@@ -28,8 +28,13 @@
           <ScalarProperty Name="itemDescription" ColumnName="itemDescription" />
           <ScalarProperty Name="locationFound" ColumnName="locationFound" />
           <ScalarProperty Name="dateFound" ColumnName="dateFound" />
-          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
           <ScalarProperty Name="locationName" ColumnName="locationName" />
+          <ScalarProperty Name="locationLost" ColumnName="locationLost" />
+          <ScalarProperty Name="itemFoundName" ColumnName="itemFoundName" />
+          <ScalarProperty Name="itemLostName" ColumnName="itemLostName" />
+          <ScalarProperty Name="dateLost" ColumnName="dateLost" />
+          <ScalarProperty Name="ItemImage" ColumnName="ItemImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

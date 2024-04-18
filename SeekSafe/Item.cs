@@ -26,10 +26,15 @@ namespace SeekSafe
         public string itemType { get; set; }
         public string itemStatus { get; set; }
         public string itemDescription { get; set; }
-        public Nullable<int> locationFound { get; set; }
+        public string locationFound { get; set; }
         public Nullable<System.DateTime> dateFound { get; set; }
-        public string ImageURL { get; set; }
+        public byte[] ImageUrl { get; set; }
         public string locationName { get; set; }
+        public string locationLost { get; set; }
+        public string itemFoundName { get; set; }
+        public string itemLostName { get; set; }
+        public Nullable<System.DateTime> dateLost { get; set; }
+        public byte[] ItemImage { get; set; }
     
         public virtual ItemLocation ItemLocation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

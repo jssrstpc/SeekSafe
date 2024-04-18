@@ -24,21 +24,26 @@
             <PropertyRef Name="itemID" />
           </Key>
           <Property Name="itemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userIDNum" Type="nvarchar" MaxLength="20" />
-          <Property Name="itemName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="userIDNum" Type="nvarchar" MaxLength="8" />
+          <Property Name="itemName" Type="nvarchar" MaxLength="100" />
           <Property Name="itemType" Type="nvarchar" MaxLength="50" />
           <Property Name="itemStatus" Type="nvarchar" MaxLength="50" />
           <Property Name="itemDescription" Type="nvarchar" MaxLength="255" />
-          <Property Name="locationFound" Type="int" />
-          <Property Name="dateFound" Type="datetime" />
-          <Property Name="ImageURL" Type="nvarchar" MaxLength="255" />
+          <Property Name="locationFound" Type="nvarchar" MaxLength="100" />
+          <Property Name="dateFound" Type="date" />
+          <Property Name="ImageUrl" Type="varbinary(max)" />
           <Property Name="locationName" Type="nvarchar" MaxLength="100" />
+          <Property Name="locationLost" Type="nvarchar" MaxLength="100" />
+          <Property Name="itemFoundName" Type="nvarchar" MaxLength="100" />
+          <Property Name="itemLostName" Type="nvarchar" MaxLength="100" />
+          <Property Name="dateLost" Type="date" />
+          <Property Name="ItemImage" Type="image" />
         </EntityType>
         <EntityType Name="ItemLocation">
           <Key>
             <PropertyRef Name="locationID" />
           </Key>
-          <Property Name="locationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="locationID" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="locationName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Notification_Message">
@@ -46,7 +51,7 @@
             <PropertyRef Name="notificationID" />
           </Key>
           <Property Name="notificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userIDNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="userIDNum" Type="nvarchar" MaxLength="8" />
           <Property Name="messageNotif" Type="nvarchar" MaxLength="255" />
           <Property Name="dateReceive" Type="date" />
         </EntityType>
@@ -72,8 +77,8 @@
             <PropertyRef Name="transactionID" />
           </Key>
           <Property Name="transactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userIDNum" Type="nvarchar" MaxLength="20" />
-          <Property Name="otherUserIDNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="userIDNum" Type="nvarchar" MaxLength="8" />
+          <Property Name="otherUserIDNum" Type="nvarchar" MaxLength="8" />
           <Property Name="itemID" Type="int" />
           <Property Name="transactionDate" Type="date" />
           <Property Name="transactionType" Type="nvarchar" MaxLength="50" />
@@ -83,7 +88,7 @@
             <PropertyRef Name="userID" />
           </Key>
           <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userIDNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="userIDNum" Type="nvarchar" MaxLength="8" Nullable="false" />
           <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="roleID" Type="int" />
@@ -336,15 +341,20 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
             <PropertyRef Name="itemID" />
           </Key>
           <Property Name="itemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="itemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userIDNum" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="itemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="itemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="itemDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="locationFound" Type="Int32" />
-          <Property Name="dateFound" Type="DateTime" Precision="3" />
-          <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="locationFound" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dateFound" Type="DateTime" Precision="0" />
+          <Property Name="ImageUrl" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="locationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="locationLost" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="itemFoundName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="itemLostName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dateLost" Type="DateTime" Precision="0" />
+          <Property Name="ItemImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="ItemLocation" Relationship="Self.FK__Item__locationFo__59FA5E80" FromRole="Item" ToRole="ItemLocation" />
           <NavigationProperty Name="TransactionHistory" Relationship="Self.FK__Transacti__itemI__5EBF139D" FromRole="Item" ToRole="TransactionHistory" />
         </EntityType>
@@ -352,7 +362,7 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
           <Key>
             <PropertyRef Name="locationID" />
           </Key>
-          <Property Name="locationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="locationID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="locationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Item" Relationship="Self.FK__Item__locationFo__59FA5E80" FromRole="ItemLocation" ToRole="Item" />
         </EntityType>
@@ -361,7 +371,7 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
             <PropertyRef Name="notificationID" />
           </Key>
           <Property Name="notificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="userIDNum" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="messageNotif" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="dateReceive" Type="DateTime" Precision="0" />
         </EntityType>
@@ -387,8 +397,8 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
             <PropertyRef Name="transactionID" />
           </Key>
           <Property Name="transactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="otherUserIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="userIDNum" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="otherUserIDNum" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="itemID" Type="Int32" />
           <Property Name="transactionDate" Type="DateTime" Precision="0" />
           <Property Name="transactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -399,7 +409,7 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
             <PropertyRef Name="userID" />
           </Key>
           <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userIDNum" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="roleID" Type="Int32" />
@@ -642,8 +652,13 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
                 <ScalarProperty Name="itemDescription" ColumnName="itemDescription" />
                 <ScalarProperty Name="locationFound" ColumnName="locationFound" />
                 <ScalarProperty Name="dateFound" ColumnName="dateFound" />
-                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="locationName" ColumnName="locationName" />
+                <ScalarProperty Name="locationLost" ColumnName="locationLost" />
+                <ScalarProperty Name="itemFoundName" ColumnName="itemFoundName" />
+                <ScalarProperty Name="itemLostName" ColumnName="itemLostName" />
+                <ScalarProperty Name="dateLost" ColumnName="dateLost" />
+                <ScalarProperty Name="ItemImage" ColumnName="ItemImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

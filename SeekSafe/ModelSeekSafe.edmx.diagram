@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9b1039ea13974990b6cf5e5838dfe463" Name="Diagram1">
+      <Diagram DiagramId="c5e97b481448467e8fc2f8567e8dc774" Name="Diagram1">
         <EntityTypeShape EntityType="SeekSafeModel.Category" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SeekSafeModel.Department" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SeekSafeModel.Item" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="SeekSafeModel.ItemLocation" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeekSafeModel.ItemLocation" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SeekSafeModel.Notification_Message" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SeekSafeModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SeekSafeModel.Tag" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SeekSafeModel.TransactionHistory" Width="1.5" PointX="10.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeekSafeModel.TransactionHistory" Width="1.5" PointX="10.25" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="SeekSafeModel.UserAccount" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SeekSafeModel.UserInfo" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SeekSafeModel.UserRole" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />

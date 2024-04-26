@@ -48,16 +48,6 @@
     <Property Name="messageNotif" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="dateReceive" Type="DateTime" Precision="0" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="Tag">
     <Key>
       <PropertyRef Name="tagID" />
@@ -164,7 +154,6 @@
     <EntitySet Name="Item" EntityType="Self.Item" />
     <EntitySet Name="ItemLocation" EntityType="Self.ItemLocation" />
     <EntitySet Name="Notification_Message" EntityType="Self.Notification_Message" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Tag" EntityType="Self.Tag" />
     <EntitySet Name="TransactionHistory" EntityType="Self.TransactionHistory" />
     <EntitySet Name="UserAccount" EntityType="Self.UserAccount" />
@@ -186,6 +175,7 @@
       <End Role="UserRole" EntitySet="UserRole" />
       <End Role="UserAccount" EntitySet="UserAccount" />
     </AssociationSet>
+<<<<<<< Updated upstream:SeekSafe/SeekSafe/obj/Debug/edmxResourcesToEmbed/ModelCRUD.csdl
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -239,4 +229,15 @@
     <Property Name="roleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
+=======
+    <AssociationSet Name="FK__UserInfo__userID__534D60F1" Association="Self.FK__UserInfo__userID__534D60F1">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserAccount" Association="Self.FK_UserInfo_UserAccount">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+  </EntityContainer>
+>>>>>>> Stashed changes:SeekSafe/obj/Debug/edmxResourcesToEmbed/ModelSeekSafe.csdl
 </Schema>

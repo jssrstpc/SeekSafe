@@ -44,16 +44,6 @@
     <Property Name="messageNotif" Type="nvarchar" MaxLength="255" />
     <Property Name="dateReceive" Type="date" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="Tag">
     <Key>
       <PropertyRef Name="tagID" />
@@ -174,6 +164,7 @@ warning 6035: The relationship 'FK__Transacti__userI__5CD6CB2B' has columns that
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< Updated upstream:SeekSafe/SeekSafe/obj/Debug/edmxResourcesToEmbed/ModelCRUD.ssdl
   <!--Errors Found During Generation:
 warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK__UserInfo__userID__534D60F1" />-->
@@ -208,13 +199,38 @@ warning 6035: The relationship 'FK__UserInfo__userID__534D60F1' has columns that
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+=======
+  <Association Name="FK__UserInfo__userID__534D60F1">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserAccount">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+>>>>>>> Stashed changes:SeekSafe/obj/Debug/edmxResourcesToEmbed/ModelSeekSafe.ssdl
   <EntityContainer Name="SeekSafeModelStoreContainer">
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemLocation" EntityType="Self.ItemLocation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Notification_Message" EntityType="Self.Notification_Message" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionHistory" EntityType="Self.TransactionHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />

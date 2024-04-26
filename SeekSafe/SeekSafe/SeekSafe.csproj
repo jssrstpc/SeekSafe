@@ -211,6 +211,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
+<<<<<<< Updated upstream:SeekSafe/SeekSafe/SeekSafe.csproj
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>ModelCRUD.tt</DependentUpon>
     </Compile>
@@ -220,6 +221,8 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ModelCRUD.tt</DependentUpon>
     </Compile>
+=======
+>>>>>>> Stashed changes:SeekSafe/SeekSafe.csproj
     <Compile Include="Tag.cs">
       <DependentUpon>ModelCRUD.tt</DependentUpon>
     </Compile>

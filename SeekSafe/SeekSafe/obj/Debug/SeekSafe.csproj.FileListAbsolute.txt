@@ -148,6 +148,7 @@ C:\Users\acer\Downloads\SeekSafe\SeekSafe\SeekSafe\SeekSafe\bin\System.Web.Mvc.x
 C:\Users\acer\Downloads\SeekSafe\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.csprojResolveAssemblyReference.cache
 C:\Users\acer\Downloads\SeekSafe\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.dll
 C:\Users\acer\Downloads\SeekSafe\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.pdb
+<<<<<<< Updated upstream:SeekSafe/SeekSafe/obj/Debug/SeekSafe.csproj.FileListAbsolute.txt
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\bin\ApplicationInsights.config
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\bin\roslyn\csc.exe
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -198,3 +199,55 @@ C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\b
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.dll
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.pdb
 C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\SeekSafe\obj\Debug\SeekSafe.csprojResolveAssemblyReference.cache
+=======
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\ApplicationInsights.config
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\csc.exe
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\vbc.exe
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\VBCSCompiler.exe
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\SeekSafe.dll.config
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\SeekSafe.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\SeekSafe.pdb
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\EntityFramework.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\EntityFramework.SqlServer.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.Web.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.ApplicationInsights.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Helpers.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Mvc.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Razor.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Webpages.Deployment.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Webpages.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Webpages.Razor.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\EntityFramework.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\EntityFramework.SqlServer.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.Web.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.ApplicationInsights.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Razor.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Webpages.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Webpages.Deployment.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Webpages.Razor.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Helpers.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\bin\System.Web.Mvc.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\obj\Debug\SeekSafe.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\obj\Debug\SeekSafe.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\obj\Debug\SeekSafe.pdb
+>>>>>>> Stashed changes:SeekSafe/obj/Debug/SeekSafe.csproj.FileListAbsolute.txt

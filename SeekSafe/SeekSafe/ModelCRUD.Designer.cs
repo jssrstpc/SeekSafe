@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:SeekSafe/SeekSafe/ModelCRUD.Designer.cs
 ﻿// T4 code generation is enabled for model 'C:\Users\acer\Downloads\_SeekSafe_-main\_SeekSafe_-main\SeekSafe\SeekSafe\ModelCRUD.edmx'. 
+=======
+﻿// T4 code generation is enabled for model 'C:\Users\User\Documents\Visual Studio 2015\Projects\SeekSafe\SeekSafe\ModelSeekSafe.edmx'. 
+>>>>>>> Stashed changes:SeekSafe/ModelSeekSafe.Designer.cs
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
